@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button">
+        发送
+    </button>
+
+    <button id="btn_post">
+        POST
+    </button>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script>
+    const btn = document.querySelector('#button');
+    const btn_post = document.querySelector('#btn_post');
+
+    btn.addEventListener('click', () => {
+       $.ajax({
+           url: 'http://127.0.0.1:3000/thumbsup/',
+        //    url: 'http://127.0.0.1:8000/thumbsup/',
+           method: 'GET',
+           data: { id: 1},
+           success: (res) => {
+               console.log(res);
+           }
+
+       });
+    });
+
+    btn_post.addEventListener('click', () => {
+        
+        $.ajax({
+            url: 'http://127.0.0.1:3000/thumbsup',
+            // url: 'http://127.0.0.1:8000/thumbsup/add',
+            method: 'POST',
+            data: {
+                id: 1
+            },
+            success: (res) => {
+              console.log(res)
+           }
+        });
+        // fetch('http://127.0.0.1:8000/thumbsup/add', {
+        //     method: 'POST',
+        //     body: 'id=1',
+        //     headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+        // })
+        // .then(res => res.json())
+        // .then(data => console.log(data));
+    });
+</script>
+</body>
+</html>
